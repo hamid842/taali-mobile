@@ -1,3 +1,4 @@
+import { MenuItem } from "./menu";
 import { UserRoleType } from "./role";
 import { ISchool } from "./school";
 
@@ -42,4 +43,26 @@ export interface LoginResponse {
   permissions?: string[];
   availableSchools?: ISchool[];
   currentSchool?: ISchool;
+}
+
+export interface AuthContextType {
+  user: LoginResponse | null;
+  currentRoleContext: string | null;
+  isLoading: boolean;
+  isAuthenticated: boolean;
+  isInitialized: boolean;
+  menuItems: MenuItem[];
+  isMenuLoading: boolean;
+  isMenuError: boolean;
+  login: (
+    token: string,
+    userData: LoginResponse,
+    refreshToken?: string
+  ) => Promise<void>;
+  logout: () => Promise<void>;
+  updateUser: (userData: Partial<User>) => void;
+  checkPermission: (permission: string) => boolean;
+  refetchMenu: () => Promise<void>;
+  updateSchoolContext: (schoolId: number, roleContext?: string) => void;
+  resetRoleContext: () => void;
 }

@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { useAuth } from "contexts/AuthContext";
+import { useAuth } from "@hooks/use-auth";
 import { authService } from "services/auth-service";
-import { LoginResponse } from "types/auth";
-import { UserRoleType } from "types/role";
+import { LoginResponse } from "app-data-types/auth";
+import { UserRoleType } from "app-data-types/role";
 
 export const useLoginMutation = () => {
   const { login } = useAuth();
@@ -30,5 +30,3 @@ export const useLoginMutation = () => {
     },
   });
 };
-
-

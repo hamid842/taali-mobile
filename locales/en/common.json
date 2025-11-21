@@ -17,5 +17,24 @@
     "logout": "Logout",
     "emailPlaceholder": "Enter your email",
     "passwordPlaceholder": "Enter your password"
+  },
+  "drawer": {
+    "school": "School Management System",
+    "portalMenu": "PORTAL MENU",
+    "loadingMenu": "Loading menu...",
+    "noMenuItems": "No menu items available",
+    "contactAdmin": "Contact administrator for access",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "role": "Role",
+    "quickAccess": "Quick Access",
+    "recentActivity": "Recent Activity",
+    "noRecentActivity": "No recent activity to display"
   }
 }

@@ -2,8 +2,8 @@ import i18n, { InitOptions } from "i18next";
 import { initReactI18next } from "react-i18next";
 import * as Localization from "expo-localization";
 
-import enTranslations from "../locales/en/common.json";
-import faTranslations from "../locales/fa/common.json";
+import enTranslations from "@locales/en/common.json";
+import faTranslations from "@locales/fa/common.json";
 
 const resources = {
   en: { translation: enTranslations },

@@ -1,13 +1,22 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, I18nManager } from "react-native";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "contexts/ThemeContext";
+import { useTheme } from "@hooks/use-theme";
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const { isDark } = useTheme();
 
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === "en" ? "fa" : "en");
+  const toggleLanguage = async () => {
+    const isFa = i18n.language === "fa";
+    const nextLang = isFa ? "en" : "fa";
+
+    await i18n.changeLanguage(nextLang);
+
+    const shouldBeRTL = nextLang === "fa";
+
+    if (I18nManager.isRTL !== shouldBeRTL) {
+      I18nManager.allowRTL(shouldBeRTL);
+    }
   };
 
   return (

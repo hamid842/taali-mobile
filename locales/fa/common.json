@@ -18,5 +18,24 @@
     "logout": "خروج",
     "emailPlaceholder": "ایمیل خود را وارد کنید",
     "passwordPlaceholder": "رمز عبور خود را وارد کنید"
+  },
+  "drawer": {
+    "school": "سیستم مدیریت مدرسه",
+    "portalMenu": "منوی پورتال",
+    "loadingMenu": "در حال بارگذاری منو...",
+    "noMenuItems": "هیچ آیتم منویی موجود نیست",
+    "contactAdmin": "برای دسترسی با مدیر سیستم تماس بگیرید",
+    "logout": "خروج",
+    "dashboard": "داشبورد",
+    "profile": "پروفایل",
+    "settings": "تنظیمات"
+  },
+  "dashboard": {
+    "title": "داشبورد",
+    "welcome": "خوش آمدید",
+    "role": "نقش",
+    "quickAccess": "دسترسی سریع",
+    "recentActivity": "فعالیت های اخیر",
+    "noRecentActivity": "هیچ فعالیتی برای نمایش وجود ندارد"
   }
 }

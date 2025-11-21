@@ -1,7 +1,7 @@
-import { Text, TextInput, TextInputProps, View } from "react-native";
+import { Text, TextInput, TextInputProps } from "react-native";
 import { Control, FieldValues, Path, useController } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import { useTheme } from "contexts/ThemeContext";
+import { useTheme } from "@hooks/use-theme";
+import ThemedView from "./ThemedView";
 
 interface FormInputProps<T extends FieldValues> extends TextInputProps {
   control: Control<T>;
@@ -20,8 +20,6 @@ export default function FormInput<T extends FieldValues>({
   ...textInputProps
 }: FormInputProps<T>) {
   const { isDark } = useTheme();
-  const { i18n } = useTranslation();
-  const isRTL = i18n.language === "fa";
 
   const {
     field,
@@ -35,13 +33,12 @@ export default function FormInput<T extends FieldValues>({
   });
 
   return (
-    <View className="mb-6">
+    <ThemedView background="card" className="mb-6">
       {/* Label */}
       <Text
         className={`text-sm font-medium mb-2 ${
           isDark ? "text-dark-text" : "text-light-text"
         }`}
-        style={{ textAlign: isRTL ? "right" : "left" }}
       >
         {label}
         {required && <Text className="text-red-500"> *</Text>}
@@ -66,22 +63,13 @@ export default function FormInput<T extends FieldValues>({
             ? "bg-dark-background text-dark-text"
             : "bg-white text-light-text"
         }`}
-        style={{
-          textAlign: isRTL ? "right" : "left",
-          writingDirection: isRTL ? "rtl" : "ltr",
-        }}
         {...textInputProps}
       />
 
       {/* Error Message */}
       {error && (
-        <Text
-          className="text-red-500 text-xs mt-1"
-          style={{ textAlign: isRTL ? "right" : "left" }}
-        >
-          {error.message}
-        </Text>
+        <Text className="text-red-500 text-xs mt-1">{error.message}</Text>
       )}
-    </View>
+    </ThemedView>
   );
 }

@@ -9,7 +9,8 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { Control, FieldValues, Path, useController } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "contexts/ThemeContext";
+import { useTheme } from "@hooks/use-theme";
+import ThemedView from "./ThemedView";
 
 interface PasswordInputProps<T extends FieldValues> extends TextInputProps {
   control: Control<T>;
@@ -52,13 +53,13 @@ export default function PasswordInput<T extends FieldValues>({
   };
 
   return (
-    <View className="mb-6">
+    <ThemedView background="card" className="mb-6">
       {/* Label */}
       <Text
         className={`text-sm font-medium mb-2 ${
           isDark ? "text-dark-text" : "text-light-text"
         }`}
-        style={{ textAlign: isRTL ? "right" : "left" }}
+        // style={{ textAlign: isRTL ? "right" : "left" }}
       >
         {label}
         {required && <Text className="text-red-500"> *</Text>}
@@ -115,6 +116,6 @@ export default function PasswordInput<T extends FieldValues>({
           {error.message}
         </Text>
       )}
-    </View>
+    </ThemedView>
   );
 }
