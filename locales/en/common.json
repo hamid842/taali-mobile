@@ -1,0 +1,21 @@
+{
+  "common": {
+    "success": "Successful",
+    "error": "Error",
+    "info": "Info"
+  },
+  "login": {
+    "welcome": "Welcome",
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Sign In",
+    "forgotPassword": "Forgot Password?",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language",
+    "logout": "Logout",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password"
+  }
+}

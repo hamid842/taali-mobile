@@ -1,0 +1,22 @@
+{
+  "common": {
+    "success": "موفق",
+    "error": "خطا",
+    "info": "اطلاعات"
+  },
+
+  "login": {
+    "welcome": "خوش آمدید",
+    "title": "ورود",
+    "email": "ایمیل",
+    "password": "رمز عبور",
+    "loginButton": "ورود به سیستم",
+    "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+    "darkMode": "حالت تاریک",
+    "lightMode": "حالت روشن",
+    "language": "زبان",
+    "logout": "خروج",
+    "emailPlaceholder": "ایمیل خود را وارد کنید",
+    "passwordPlaceholder": "رمز عبور خود را وارد کنید"
+  }
+}
