@@ -1,8 +1,13 @@
 {
   "common": {
     "success": "Successful",
-    "error": "Error",
-    "info": "Info"
+    "info": "Info",
+    "seeAll": "View All",
+    "tryAgain":"Try again",
+    "error": {
+      "error": "Error",
+      "loadingData": "Failed to load data"
+    }
   },
   "login": {
     "welcome": "Welcome",
@@ -36,5 +41,31 @@
     "quickAccess": "Quick Access",
     "recentActivity": "Recent Activity",
     "noRecentActivity": "No recent activity to display"
+  },
+  "parent": {
+    "dashboard": {
+      "welcome": "Welcome back",
+      "subtitle": "Here's what's happening with your children today.",
+      "children": "Children",
+      "alerts": "Alerts",
+      "attendance": "Attendance",
+      "payments": "Payments",
+      "myChildren": "My Children",
+      "noChildren": "No children registered",
+      "noChildrenDescription": "Contact your school to add children to your account",
+      "quickActions": "Quick Actions",
+      "grades": "Grades",
+      "notifications": "Notifications"
+    },
+    "children": {
+      "title": "My Children",
+      "subtitle": "{{count}} child{{count !== 1 ? 'ren' : ''}} registered",
+      "attendance": "Attendance",
+      "averageGrade": "Avg Grade",
+      "teacher": "Teacher",
+      "noChildren": "No Children Found",
+      "noChildrenDescription": "Contact your school administrator to add children to your account.",
+      "grades": "Grades"
+    }
   }
 }

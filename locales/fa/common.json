@@ -1,8 +1,13 @@
 {
   "common": {
     "success": "موفق",
-    "error": "خطا",
-    "info": "اطلاعات"
+    "info": "اطلاعات",
+    "seeAll": "مشاهده همه",
+    "tryAgain": "تلاش دوباره",
+    "error": {
+      "error": "خطا",
+      "loadingData": "خطا در بارگذاری اطلاعات"
+    }
   },
 
   "login": {
@@ -37,5 +42,31 @@
     "quickAccess": "دسترسی سریع",
     "recentActivity": "فعالیت های اخیر",
     "noRecentActivity": "هیچ فعالیتی برای نمایش وجود ندارد"
+  },
+  "parent": {
+    "dashboard": {
+      "welcome": "خوش آمدید",
+      "subtitle": "در اینجا اتفاقاتی که امروز برای فرزندانتان می‌افتد را مشاهده می‌کنید.",
+      "children": "فرزندان",
+      "alerts": "هشدارها",
+      "attendance": "حضور و غیاب",
+      "payments": "پرداخت‌ها",
+      "myChildren": "فرزندان من",
+      "noChildren": "فرزندی ثبت نشده است",
+      "noChildrenDescription": "برای افزودن فرزند به حساب خود با مدرسه تماس بگیرید",
+      "quickActions": "دسترسی سریع",
+      "grades": "نمرات",
+      "notifications": "اعلان‌ها"
+    },
+    "children": {
+      "title": "فرزندان من",
+      "subtitle": "{{count}} فرزند ثبت شده است",
+      "attendance": "حضور و غیاب",
+      "averageGrade": "معدل",
+      "teacher": "معلم",
+      "noChildren": "فرزندی یافت نشد",
+      "noChildrenDescription": "برای افزودن فرزند به حساب خود با مدیر مدرسه تماس بگیرید.",
+      "grades": "نمرات"
+    }
   }
 }

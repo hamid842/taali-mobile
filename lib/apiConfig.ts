@@ -71,6 +71,24 @@ export const apiConfig = {
       assignClass: (teacherId: number) =>
         `${API_BASE_URL}/teachers/${teacherId}/assign-classes`,
     },
+    parents: {
+      create: `${API_BASE_URL}/parents`,
+      associateWithStudent: (studentId: number) =>
+        `${API_BASE_URL}/parents/${studentId}/associate`,
+      getByStudent: (studentId: number) =>
+        `${API_BASE_URL}/parents/student/${studentId}`,
+      // Add new parent endpoints
+      dashboardStats: `${API_BASE_URL}/parents/dashboard/stats`,
+      myChildren: `${API_BASE_URL}/parents/my-children`,
+      childDetail: (childId: number) =>
+        `${API_BASE_URL}/parents/children/${childId}`,
+      childrenAttendance: `${API_BASE_URL}/parents/children/attendance`,
+      childrenGrades: `${API_BASE_URL}/parents/children/grades`,
+      childAttendance: (childId: number) =>
+        `${API_BASE_URL}/parents/children/${childId}/attendance`,
+      childGrades: (childId: number) =>
+        `${API_BASE_URL}/parents/children/${childId}/grades`,
+    },
   },
   headers: {
     "Content-Type": "application/json",

@@ -1,0 +1,54 @@
+import { Pagination } from "./pagination";
+import type { Parent } from "./parent";
+
+export interface Student {
+  id?: number;
+  userId?: number;
+  firstName?: string;
+  lastName?: string;
+  studentCode?: string;
+  idNumber?: string;
+  birthDate?: Date;
+  gender?: string;
+  schoolId?: number;
+  studentId?: string;
+  gradeLevel?: string;
+  emergencyContact?: string;
+  emergencyPhone?: string;
+  medicalNotes?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  parents?: Parent[];
+  isActive: boolean;
+  userFirstName?: string;
+  userLastName?: string;
+  userEmail?: string;
+  className?: string;
+  profileImageUrl?: string;
+  classId?: number | null;
+}
+
+export interface StudentDetailsRequest {
+  studentId?: string;
+  idNumber?: string;
+  birthDate?: Date;
+  gradeLevel?: string;
+  emergencyContact?: string;
+  emergencyPhone?: string;
+  medicalNotes?: string;
+}
+
+export interface ParentAssociationRequest {
+  parentEmails: string[];
+  newParents: Parent[];
+}
+
+export interface StudentListResponse {
+  items: Student[];
+  pagination: Pagination;
+}
+
+export interface AssignClassRequest {
+  studentId: number;
+  classId: number;
+}

@@ -1,5 +1,5 @@
 import AppDrawerLayout from "@components/layout/AppDrawerLayout";
 
-export default function TeacherLayout() {
+export default function ParentLayout() {
   return <AppDrawerLayout />;
 }
