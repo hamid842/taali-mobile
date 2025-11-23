@@ -3,7 +3,7 @@
     "success": "Successful",
     "info": "Info",
     "seeAll": "View All",
-    "tryAgain":"Try again",
+    "tryAgain": "Try again",
     "error": {
       "error": "Error",
       "loadingData": "Failed to load data"
@@ -67,5 +67,8 @@
       "noChildrenDescription": "Contact your school administrator to add children to your account.",
       "grades": "Grades"
     }
+  },
+  "messages": {
+    "pageTitle": "Messages"
   }
 }

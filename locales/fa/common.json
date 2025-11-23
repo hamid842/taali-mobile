@@ -68,5 +68,8 @@
       "noChildrenDescription": "برای افزودن فرزند به حساب خود با مدیر مدرسه تماس بگیرید.",
       "grades": "نمرات"
     }
+  },
+  "messages": {
+    "pageTitle": "پیامها"
   }
 }

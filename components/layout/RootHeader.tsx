@@ -3,12 +3,9 @@ import { useTheme } from "@hooks/use-theme";
 import LanguageSwitcher from "@components/layout/LanguageSwitcher";
 import ThemeToggler from "@components/layout/ThemeToggler";
 import { SafeAreaView } from "react-native-safe-area-context";
+import type { NativeStackHeaderProps } from "@react-navigation/native-stack";
 
-interface RootHeaderProps {
-  title?: string;
-}
-
-export default function RootHeader({ title }: RootHeaderProps) {
+export default function RootHeader(props: NativeStackHeaderProps) {
   const { isDark } = useTheme();
 
   return (
@@ -26,7 +23,7 @@ export default function RootHeader({ title }: RootHeaderProps) {
             isDark ? "text-dark-text" : "text-light-text"
           }`}
         >
-          {title}
+          {props.options.title}
         </Text>
 
         <View className="flex-row items-center space-x-3">

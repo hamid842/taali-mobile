@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import { useParentDashboard } from "@hooks/use-parent-dashboard";
+import { useParentApi } from "@hooks/use-parent-api";
 import { useTranslation } from "react-i18next";
 import LoadingScreen from "@components/common/LoadingScreen";
 import { getIcon } from "@appUtils/get-icon";
@@ -16,7 +16,7 @@ import { ErrorMessage } from "@components/common/ErrorMessage";
 export default function MyChildrenScreen() {
   const router = useRouter();
   const { t } = useTranslation();
-  const { myChildren, refreshAll } = useParentDashboard();
+  const { myChildren, refreshAll } = useParentApi();
 
   const onRefresh = () => {
     refreshAll();

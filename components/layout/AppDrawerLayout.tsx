@@ -34,6 +34,7 @@ export default function AppDrawerLayout() {
     >
       {/* Common screens available to all roles */}
       <Drawer.Screen name="index" />
+      <Drawer.Screen name="messages" />
 
       {/* Role-based screens - only show based on user role */}
       {user?.role === "TEACHER" && (

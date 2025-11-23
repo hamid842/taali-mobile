@@ -64,7 +64,7 @@ export default function LoginScreen() {
       if (error instanceof Error)
         showToast({
           type: "error",
-          header: t("common.error"),
+          header: t("common.error.error"),
           message: error.message,
         });
     }

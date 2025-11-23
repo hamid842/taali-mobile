@@ -15,12 +15,17 @@ export default function PanelLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="index" />
       <Stack.Screen name="teacher" />
       <Stack.Screen name="student" />
       <Stack.Screen name="parent" />
       <Stack.Screen name="canteen" />
+      <Stack.Screen name="messages" />
     </Stack>
   );
 }

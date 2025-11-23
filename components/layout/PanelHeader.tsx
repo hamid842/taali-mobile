@@ -4,23 +4,20 @@ import ThemeToggler from "./ThemeToggler";
 import { Ionicons } from "@expo/vector-icons";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DrawerHeaderProps } from "@react-navigation/drawer";
 import ThemedView from "@components/common/ThemedView";
 import { useTheme } from "@hooks/use-theme";
 import { useRouter } from "expo-router";
+import type { NativeStackHeaderProps } from "@react-navigation/native-stack";
+import { DrawerHeaderProps } from "@react-navigation/drawer";
 
-interface PanelHeaderProps extends DrawerHeaderProps {
-  title?: string;
-  showBackButton?: boolean;
-}
+type PanelHeaderProps = NativeStackHeaderProps | DrawerHeaderProps;
 
-export default function PanelHeader({
-  title,
-  showBackButton = false,
-}: PanelHeaderProps) {
+export default function PanelHeader(props: PanelHeaderProps) {
   const { isDark } = useTheme();
   const navigation = useNavigation();
   const router = useRouter();
+
+  const canGoBack = navigation.canGoBack();
 
   return (
     <SafeAreaView
@@ -31,9 +28,13 @@ export default function PanelHeader({
           : "bg-light-card border-light-border"
       }`}
     >
-      <ThemedView background="card" className="flex-row items-center justify-between px-6 py-4">
+      <ThemedView
+        background="card"
+        className="flex-row items-center justify-between px-6 py-4"
+      >
         <View className="flex-row items-center flex-1">
-          {showBackButton && (
+          {/* Show back button only when we can go back */}
+          {canGoBack && (
             <TouchableOpacity
               onPress={() => navigation.goBack()}
               className="mr-3"
@@ -62,7 +63,8 @@ export default function PanelHeader({
               isDark ? "text-dark-text" : "text-light-text"
             }`}
           >
-            {title}
+            {(props as DrawerHeaderProps).options.title ||
+              (props as NativeStackHeaderProps).options.title}
           </Text>
         </View>
 
@@ -70,7 +72,7 @@ export default function PanelHeader({
           <LanguageSwitcher />
           <ThemeToggler />
           <TouchableOpacity
-            onPress={() => router.push("(panel)/teacher/inbox")}
+            onPress={() => router.push("(panel)/messages")}
             className="mr-3"
           >
             <Ionicons

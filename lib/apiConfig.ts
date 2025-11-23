@@ -89,12 +89,112 @@ export const apiConfig = {
       childGrades: (childId: number) =>
         `${API_BASE_URL}/parents/children/${childId}/grades`,
     },
+    // Message and Conversation endpoints
+    conversations: {
+      // Get all conversations for current user
+      list: `${API_BASE_URL}/conversations`,
+      // Create new conversation
+      create: `${API_BASE_URL}/conversations`,
+      // Get specific conversation
+      getById: (conversationId: number) =>
+        `${API_BASE_URL}/conversations/${conversationId}`,
+      // Send message in conversation
+      sendMessage: (conversationId: number) =>
+        `${API_BASE_URL}/conversations/${conversationId}/messages`,
+      // Mark conversation as read
+      markAsRead: (conversationId: number) =>
+        `${API_BASE_URL}/conversations/${conversationId}/read`,
+      // Close conversation
+      closeConversation: (conversationId: number) =>
+        `${API_BASE_URL}/conversations/${conversationId}/close`,
+      // Get unread count
+      unreadCount: `${API_BASE_URL}/conversations/unread/count`,
+    },
+    // User lookup endpoints
+    users: {
+      // Get teachers for parent
+      getTeachers: `${API_BASE_URL}/users/teachers`,
+      // Get parents for teacher
+      getParents: `${API_BASE_URL}/users/parents`,
+      // Get students for parent
+      getStudents: `${API_BASE_URL}/users/students`,
+    },
+    // Notification endpoints
+    notifications: {
+      registerDevice: `${API_BASE_URL}/notifications/register-device`,
+      unregisterDevice: `${API_BASE_URL}/notifications/unregister-device`,
+    },
+    // Student endpoints
+    students: {
+      getBySchool: (schoolId: number) =>
+        `${API_BASE_URL}/students/school/${schoolId}`,
+      getById: (id: number) => `${API_BASE_URL}/students/${id}`,
+      getByClass: (classId: number) =>
+        `${API_BASE_URL}/students/class/${classId}`,
+      getByUser: (userId: number) => `${API_BASE_URL}/students/user/${userId}`,
+      updateDetailsByUser: (userId: number) =>
+        `${API_BASE_URL}/students/user/${userId}/details`,
+      associateParents: (userId: number) =>
+        `${API_BASE_URL}/students/user/${userId}/associate-parents`,
+      getGradeLevels: (schoolId: number) =>
+        `${API_BASE_URL}/students/school/${schoolId}/grade-levels`,
+      getClasses: (schoolId: number) =>
+        `${API_BASE_URL}/students/school/${schoolId}/classes`,
+      assignClass: (studentId: number) =>
+        `${API_BASE_URL}/students/${studentId}/assign-class`,
+      removeFromClass: (studentId: number) =>
+        `${API_BASE_URL}/students/${studentId}/remove-class`,
+      bulkAssign: `${API_BASE_URL}/students/bulk-assign-class`,
+    },
+    // Class endpoints
+    classes: {
+      getBySchool: (schoolId: number) =>
+        `${API_BASE_URL}/classes/school/${schoolId}`,
+      getById: (id: number) => `${API_BASE_URL}/classes/${id}`,
+      create: `${API_BASE_URL}/classes`,
+      update: (id: number) => `${API_BASE_URL}/classes/${id}`,
+      delete: (id: number) => `${API_BASE_URL}/classes/${id}`,
+      getStudents: (classId: number) =>
+        `${API_BASE_URL}/classes/${classId}/students`,
+      getSchedule: (classId: number) =>
+        `${API_BASE_URL}/classes/${classId}/schedule`,
+      getTeachers: (classId: number) =>
+        `${API_BASE_URL}/classes/${classId}/teachers`,
+    },
+    // School endpoints
+    schools: {
+      getById: (id: number) => `${API_BASE_URL}/schools/${id}`,
+      update: (id: number) => `${API_BASE_URL}/schools/${id}`,
+      getStaff: (schoolId: number) =>
+        `${API_BASE_URL}/schools/${schoolId}/staff`,
+      getStats: (schoolId: number) =>
+        `${API_BASE_URL}/schools/${schoolId}/stats`,
+    },
+    // Attendance endpoints
+    attendance: {
+      mark: `${API_BASE_URL}/attendance/mark`,
+      getByClass: (classId: number, date: string) =>
+        `${API_BASE_URL}/attendance/class/${classId}?date=${date}`,
+      getByStudent: (studentId: number, startDate: string, endDate: string) =>
+        `${API_BASE_URL}/attendance/student/${studentId}?startDate=${startDate}&endDate=${endDate}`,
+      getStats: (studentId: number) =>
+        `${API_BASE_URL}/attendance/student/${studentId}/stats`,
+    },
+    // Grade endpoints
+    grades: {
+      submit: `${API_BASE_URL}/grades/submit`,
+      getByStudent: (studentId: number) =>
+        `${API_BASE_URL}/grades/student/${studentId}`,
+      getByClass: (classId: number) =>
+        `${API_BASE_URL}/grades/class/${classId}`,
+      getBySubject: (studentId: number, subject: string) =>
+        `${API_BASE_URL}/grades/student/${studentId}/subject/${subject}`,
+    },
   },
   headers: {
     "Content-Type": "application/json",
   },
 };
-
 // Generic API client
 export const apiClient = {
   async request<T>(
@@ -187,7 +287,7 @@ export const apiClient = {
 
   async put<T>(
     url: string,
-    data: unknown,
+    data?: unknown,
     options?: {
       language?: string;
       headers?: Record<string, string>;

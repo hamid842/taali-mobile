@@ -36,7 +36,7 @@ export default function FormInput<T extends FieldValues>({
     <ThemedView background="card" className="mb-6">
       {/* Label */}
       <Text
-        className={`text-sm font-medium mb-2 ${
+        className={`text-md font-medium mb-2 ${
           isDark ? "text-dark-text" : "text-light-text"
         }`}
       >
