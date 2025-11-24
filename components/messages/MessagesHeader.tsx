@@ -1,4 +1,3 @@
-// app/(panel)/messages/components/Header.tsx
 import { View, Text } from "react-native";
 
 interface HeaderProps {
@@ -11,7 +10,7 @@ export default function MessagesHeader({
   unreadCount,
 }: HeaderProps) {
   return (
-    <View className="bg-white dark:bg-slate-800 px-4 py-3 border-b border-slate-200 dark:border-slate-700">
+    <View className="px-4 py-3">
       <View className="flex-row justify-between items-center">
         <Text className="text-2xl font-bold text-slate-900 dark:text-slate-100">
           {title}

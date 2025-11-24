@@ -4,6 +4,7 @@
     "info": "Info",
     "seeAll": "View All",
     "tryAgain": "Try again",
+    "retry": "Retry",
     "error": {
       "error": "Error",
       "loadingData": "Failed to load data"
@@ -69,6 +70,62 @@
     }
   },
   "messages": {
-    "pageTitle": "Messages"
+    "pageTitle": "Messages",
+    "new": {
+      "title": "New Message",
+      "send": "Send",
+      "to": "To",
+      "aboutStudent": "About the Student",
+      "generalInquiry": "General Inquiry",
+      "category": "Category",
+      "subject": "Subject",
+      "message": "Message",
+      "subjectPlaceholder": "Enter the message subject...",
+      "messagePlaceholder": "Type your message here...",
+      "loadingTeachers": "Loading teachers...",
+      "selectStudent": "Select Student",
+      "grade": "Grade",
+      "noStudents": "No students found for your account",
+      "noTeachers": "No teachers found for this student",
+      "teachersError": "Failed to load teachers",
+      "searchPlaceholder": "Search conversations...",
+      "emptyTitle": "No conversations yet",
+      "emptyDescription": "Start a new conversation with teachers or parents",
+      "newMessage": "New Message",
+      "messages": "messages",
+      "unread": "unread",
+      "validation": {
+        "teacherRequired": "Please select a teacher",
+        "subjectRequired": "Please enter a subject",
+        "messageRequired": "Please enter a message",
+        "studentRequired": "Please select a student",
+        "selectStudentFirst": "Please select a student first to see available teachers"
+      },
+      "success": {
+        "title": "Message Sent",
+        "message": "Your message has been successfully sent"
+      },
+      "error": {
+        "title": "Error",
+        "message": "Failed to send the message. Please try again."
+      },
+      "status": {
+        "loading": "Loading conversations...",
+        "refreshing": "Refreshing..."
+      },
+      "time": {
+        "minutesAgo": "{count}m ago",
+        "hoursAgo": "{count}h ago",
+        "yesterday": "Yesterday",
+        "daysAgo": "{count}d ago"
+      }
+    },
+
+    "categories": {
+      "general": "General",
+      "academic": "Academic",
+      "absence": "Absence",
+      "behavior": "Behavior"
+    }
   }
 }

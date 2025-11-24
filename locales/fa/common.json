@@ -4,6 +4,7 @@
     "info": "اطلاعات",
     "seeAll": "مشاهده همه",
     "tryAgain": "تلاش دوباره",
+    "retry": "تلاش دوباره",
     "error": {
       "error": "خطا",
       "loadingData": "خطا در بارگذاری اطلاعات"
@@ -70,6 +71,62 @@
     }
   },
   "messages": {
-    "pageTitle": "پیامها"
+    "pageTitle": "پیام‌ها",
+    "new": {
+      "title": "پیام جدید",
+      "send": "ارسال",
+      "to": "به",
+      "aboutStudent": "درباره دانش‌آموز",
+      "generalInquiry": "درخواست عمومی",
+      "category": "دسته‌بندی",
+      "subject": "موضوع",
+      "message": "پیام",
+      "subjectPlaceholder": "موضوع پیام را وارد کنید...",
+      "messagePlaceholder": "پیام خود را اینجا تایپ کنید...",
+      "loadingTeachers": "در حال بارگذاری معلمان...",
+      "selectStudent": "انتخاب دانش‌آموز",
+      "grade": "پایه",
+      "noStudents": "هیچ دانش‌آموزی برای حساب شما یافت نشد",
+      "noTeachers": "هیچ معلمی برای این دانش‌آموز یافت نشد",
+      "teachersError": "بارگذاری معلمان ناموفق بود",
+      "searchPlaceholder": "جستجوی گفتگوها...",
+      "emptyTitle": "هنوز هیچ گفتگویی وجود ندارد",
+      "emptyDescription": "یک گفتگو جدید با معلمان یا والدین شروع کنید",
+      "newMessage": "پیام جدید",
+      "messages": "پیام",
+      "unread": "خوانده‌نشده",
+      "validation": {
+        "teacherRequired": "لطفاً یک معلم انتخاب کنید",
+        "subjectRequired": "لطفاً موضوع را وارد کنید",
+        "messageRequired": "لطفاً پیام را وارد کنید",
+        "studentRequired": "لطفاً یک دانش‌آموز انتخاب کنید",
+        "selectStudentFirst": "لطفاً ابتدا دانش‌آموز را انتخاب کنید تا معلمان قابل انتخاب نمایش داده شوند"
+      },
+      "success": {
+        "title": "پیام ارسال شد",
+        "message": "پیام شما با موفقیت ارسال شد"
+      },
+      "error": {
+        "title": "خطا",
+        "message": "ارسال پیام ناموفق بود. لطفاً دوباره تلاش کنید."
+      },
+      "status": {
+        "loading": "در حال بارگذاری گفتگوها...",
+        "refreshing": "در حال بروزرسانی..."
+      },
+      "time": {
+        "minutesAgo": "{count} دقیقه پیش",
+        "hoursAgo": "{count} ساعت پیش",
+        "yesterday": "دیروز",
+        "daysAgo": "{count} روز پیش"
+      }
+    },
+
+    "categories": {
+      "general": "عمومی",
+      "academic": "تحصیلی",
+      "absence": "غیبت",
+      "behavior": "رفتار"
+    }
   }
 }

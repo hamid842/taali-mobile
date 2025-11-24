@@ -145,6 +145,9 @@ export const apiConfig = {
       removeFromClass: (studentId: number) =>
         `${API_BASE_URL}/students/${studentId}/remove-class`,
       bulkAssign: `${API_BASE_URL}/students/bulk-assign-class`,
+      // NEW: Get teachers for a specific student
+      getTeachers: (studentId: number) =>
+        `${API_BASE_URL}/students/${studentId}/teachers`,
     },
     // Class endpoints
     classes: {

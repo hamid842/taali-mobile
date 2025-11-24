@@ -49,8 +49,8 @@ export interface CreateConversationRequest {
   subject: string;
   category: ConversationCategory;
   receiverId: number;
-  studentId?: number;
-  initialMessage: string;
+  studentId: number;
+  content: string;
 }
 
 export interface SendMessageRequest {

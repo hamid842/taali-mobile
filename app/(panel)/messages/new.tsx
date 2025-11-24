@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { FlatList, RefreshControl } from "react-native";
 import { useRouter } from "expo-router";
 import { useMessageApi } from "@hooks/use-message-api";
@@ -33,7 +33,10 @@ export default function MessagesScreen() {
     refetch,
   } = useGetConversations();
 
-  const conversationsData = conversations?.data || [];
+  const conversationsData = useMemo(() => {
+    return conversations?.data || [];
+  }, [conversations]);
+
   const { data: unreadCount } = useGetUnreadCount();
   const { mutate: markAsRead } = useMarkAsRead();
 
@@ -43,27 +46,32 @@ export default function MessagesScreen() {
     setRefreshing(false);
   };
 
-  const handleConversationPress = (conversation: Conversation) => {
-    if (conversation.unreadCount > 0) {
-      markAsRead(conversation.id);
-    }
+  const handleConversationPress = useCallback(
+    (conversation: Conversation) => {
+      if (conversation.unreadCount > 0) {
+        markAsRead(conversation.id);
+      }
 
-    router.push({
-      pathname: "/(panel)/messages/conversation",
-      params: {
-        conversationId: conversation.id,
-        receiverName: `${conversation.receiver.firstName} ${conversation.receiver.lastName}`,
-      },
-    });
-  };
+      router.push({
+        pathname: "/(panel)/messages/conversation",
+        params: {
+          conversationId: conversation.id,
+          receiverName: `${conversation.receiver.firstName} ${conversation.receiver.lastName}`,
+        },
+      });
+    },
+    [markAsRead, router]
+  );
 
-  const handleNewMessage = () => {
+  const handleNewMessage = useCallback(() => {
     router.push("/(panel)/messages/new");
-  };
+  }, [router]);
 
-  const filteredConversations =
-    conversationsData?.filter((conversation: Conversation) => {
-      const searchLower = searchQuery.toLowerCase();
+  const filteredConversations = useMemo(() => {
+    if (!searchQuery.trim()) return conversationsData;
+
+    const searchLower = searchQuery.toLowerCase();
+    return conversationsData.filter((conversation: Conversation) => {
       const receiverName =
         `${conversation.receiver.firstName} ${conversation.receiver.lastName}`.toLowerCase();
       const subject = conversation.subject.toLowerCase();
@@ -74,13 +82,17 @@ export default function MessagesScreen() {
         subject.includes(searchLower) ||
         lastMessage.includes(searchLower)
       );
-    }) || [];
+    });
+  }, [conversationsData, searchQuery]);
 
-  const getOtherParticipant = (conversation: Conversation) => {
-    return conversation.initiator.id === user?.id
-      ? conversation.receiver
-      : conversation.initiator;
-  };
+  const getOtherParticipant = useCallback(
+    (conversation: Conversation) => {
+      return conversation.initiator.id === user?.id
+        ? conversation.receiver
+        : conversation.initiator;
+    },
+    [user?.id]
+  );
 
   if (isLoading) {
     return <LoadingState />;
@@ -91,10 +103,10 @@ export default function MessagesScreen() {
   }
 
   return (
-    <ThemedView className="flex-1">
+    <ThemedView className="flex-1 bg-slate-50 dark:bg-slate-900">
       <MessagesHeader
-        title={t("messages.pageTitle")}
-        unreadCount={unreadCount?.data}
+        title={t("messages.title", "Messages")}
+        unreadCount={unreadCount}
       />
 
       <MessagesSearchBar
@@ -118,11 +130,16 @@ export default function MessagesScreen() {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={handleRefresh}
-            tintColor={theme === "dark" ? "#F1F5F9" : "#3B82F6"}
+            tintColor={theme === "dark" ? "#F1F5F6" : "#3B82F6"}
+            colors={[theme === "dark" ? "#F1F5F6" : "#3B82F6"]}
           />
         }
         ListEmptyComponent={
           <MessagesEmptyState onNewMessage={handleNewMessage} />
+        }
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={
+          filteredConversations.length === 0 ? { flex: 1 } : undefined
         }
       />
 

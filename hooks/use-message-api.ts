@@ -1,8 +1,13 @@
-import { SendMessageRequest } from "@appTypes/message";
+import {
+  CreateConversationRequest,
+  SendMessageRequest,
+} from "@appTypes/message";
 import { messageApi } from "@lib/api/message-api";
 import { notificationApi } from "@lib/api/notification-api";
+import { studentApi } from "@lib/api/student-api";
 import { userLookupApi } from "@lib/api/user-lookup-api";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAuth } from "./use-auth";
 
 // Query keys
 export const messageKeys = {
@@ -22,26 +27,56 @@ export const userLookupKeys = {
 
 export const useMessageApi = () => {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
 
   // Conversations
   const useGetConversations = () => {
     return useQuery({
       queryKey: messageKeys.lists(),
-      queryFn: messageApi.getConversations,
+      queryFn: async () => {
+        if (!user?.id) {
+          throw new Error("Student ID is required");
+        }
+        return await messageApi.getConversations(user.id);
+      },
+    });
+  };
+
+  const useGetStudentTeachers = (studentId?: number) => {
+    return useQuery({
+      queryKey: ["studentTeachers", studentId],
+      queryFn: async () => {
+        if (!studentId) {
+          throw new Error("Student ID is required");
+        }
+        return await studentApi.getStudentTeachers(studentId);
+      },
+      enabled: !!studentId,
     });
   };
 
   const useGetConversation = (conversationId: number) => {
     return useQuery({
       queryKey: messageKeys.detail(conversationId),
-      queryFn: () => messageApi.getConversation(conversationId),
+      queryFn: async () => {
+        if (!user?.id) {
+          throw new Error("User must be authenticated to create conversation");
+        }
+        return await messageApi.getConversation(conversationId, user.id);
+      },
       enabled: !!conversationId,
     });
   };
 
   const useCreateConversation = () => {
     return useMutation({
-      mutationFn: messageApi.createConversation,
+      mutationFn: async (request: CreateConversationRequest) => {
+        if (!user?.id) {
+          throw new Error("User must be authenticated to create conversation");
+        }
+
+        return await messageApi.createConversation(request, user.id);
+      },
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: messageKeys.lists() });
       },
@@ -90,7 +125,12 @@ export const useMessageApi = () => {
   const useGetUnreadCount = () => {
     return useQuery({
       queryKey: messageKeys.unreadCount(),
-      queryFn: messageApi.getUnreadCount,
+      queryFn: async () => {
+        if (!user?.id) {
+          throw new Error("User must be authenticated to create conversation");
+        }
+        return await messageApi.getUnreadCount(user.id);
+      },
     });
   };
 
@@ -133,6 +173,8 @@ export const useMessageApi = () => {
     useMarkAsRead,
     useCloseConversation,
     useGetUnreadCount,
+
+    useGetStudentTeachers,
 
     // User Lookup
     useGetTeachers,

@@ -1,5 +1,6 @@
 import { Pagination } from "./pagination";
 import type { Parent } from "./parent";
+import { ISchool } from "./school";
 
 export interface Student {
   id?: number;
@@ -26,6 +27,7 @@ export interface Student {
   className?: string;
   profileImageUrl?: string;
   classId?: number | null;
+  school?: ISchool;
 }
 
 export interface StudentDetailsRequest {

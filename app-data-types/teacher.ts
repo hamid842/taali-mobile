@@ -1,3 +1,16 @@
+export interface Teacher {
+  id: number;
+  userId?: number;
+  firstName: string;
+  lastName: string;
+  name?: string;
+  subject: string;
+  role: string;
+  email?: string;
+  phone?: string;
+  profileImage?: string;
+}
+
 export interface TeacherDashboardStats {
   totalStudents: number;
   totalClasses: number;

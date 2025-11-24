@@ -1,3 +1,4 @@
+import { ApiResponse } from "@appTypes/api-response";
 import {
   Conversation,
   CreateConversationRequest,
@@ -8,26 +9,47 @@ import { apiClient, apiConfig } from "@lib/apiConfig";
 
 export const messageApi = {
   // Get all conversations for current user
-  getConversations: async (): Promise<Conversation[]> => {
-    return (
-      apiClient.get<Conversation[]>(apiConfig.endpoints.conversations.list)
+  getConversations: async (
+    userId: number
+  ): Promise<ApiResponse<Conversation[]>> => {
+    return apiClient.get<ApiResponse<Conversation[]>>(
+      apiConfig.endpoints.conversations.list,
+      {
+        headers: {
+          "X-User-Id": userId.toString(),
+        },
+      }
     );
   },
 
   // Get specific conversation with messages
-  getConversation: async (conversationId: number): Promise<Conversation> => {
+  getConversation: async (
+    conversationId: number,
+    userId: number
+  ): Promise<Conversation> => {
     return apiClient.get<Conversation>(
-      apiConfig.endpoints.conversations.getById(conversationId)
+      apiConfig.endpoints.conversations.getById(conversationId),
+      {
+        headers: {
+          "X-User-Id": userId.toString(),
+        },
+      }
     );
   },
 
   // Create new conversation
   createConversation: async (
-    request: CreateConversationRequest
+    request: CreateConversationRequest,
+    userId: number
   ): Promise<Conversation> => {
     return apiClient.post<Conversation>(
       apiConfig.endpoints.conversations.create,
-      request
+      request,
+      {
+        headers: {
+          "X-User-Id": userId.toString(),
+        },
+      }
     );
   },
 
@@ -57,10 +79,15 @@ export const messageApi = {
   },
 
   // Get unread count
-  getUnreadCount: async (): Promise<number> => {
-    const response = await apiClient.get<{ data: number }>(
-      apiConfig.endpoints.conversations.unreadCount
+  getUnreadCount: async (userId: number): Promise<ApiResponse<number>> => {
+    const response = await apiClient.get<ApiResponse<number>>(
+      apiConfig.endpoints.conversations.unreadCount,
+      {
+        headers: {
+          "X-User-Id": userId.toString(),
+        },
+      }
     );
-    return response.data;
+    return response;
   },
 };
